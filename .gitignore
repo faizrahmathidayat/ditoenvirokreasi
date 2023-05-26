@@ -17,7 +17,8 @@ application/logs/*
 !application/logs/.htaccess
 /vendor/
 
-uploads/banner/*.gitkeep
+uploads/banner/*
+!uploads/banner/.gitkeep 
 uploads/client/*
 uploads/galeri/*
 uploads/kategori_layanan/*
