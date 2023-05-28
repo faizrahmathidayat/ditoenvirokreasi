@@ -96,6 +96,7 @@ $route['dek-admin-login/banner'] = 'admin/BannerController';
 $route['dek-admin-login/kategori-layanan'] = 'admin/KategoriLayananController';
 $route['dek-admin-login/simpan-kategori-layanan'] = 'admin/KategoriLayananController/simpan_kategori';
 $route['dek-admin-login/hapus-banner-kategori'] = 'admin/KategoriLayananController/hapus_banner_kategori';
+$route['dek-admin-login/hapus-kategori-layanan'] = 'admin/KategoriLayananController/hapus_kategori_layanan';
 $route['dek-admin-login/upload-banner-kategori'] = 'admin/KategoriLayananController/upload_banner_kategori';
 $route['dek-admin-login/ubah-kategori'] = 'admin/KategoriLayananController/ubah_kategori';
 // end manage kategori layanan
@@ -120,5 +121,9 @@ $route['dek-admin-login/testimoni'] = 'admin/TestimoniController';
 
 // manage client
 $route['dek-admin-login/client'] = 'admin/ClientController';
+// end
+
+// manage Pesan
+$route['dek-admin-login/pesan'] = 'admin/PesanController';
 // end
 // END ADMIN

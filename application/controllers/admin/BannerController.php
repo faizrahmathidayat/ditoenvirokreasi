@@ -57,18 +57,32 @@ class BannerController extends CI_Controller
                 $upload = $this->upload->data();
                 chmod($upload['full_path'], 0777);
                 $filename = array($input['paramsName'] => $upload['file_name']);
-
-                $this->db->where('id', get_banner()->id);
-                $update = $this->db->update('dek_banner', $filename);
-                if ($update) {
-                    $status = 'success';
-                    $update = true;
-                    $msg = $_FILES['gambar']['name'] . " berhasil diupload";
+                if(!empty(get_banner())) {
+                    $this->db->where('id', get_banner()->id);
+                    $update = $this->db->update('dek_banner', $filename);
+                    if ($update) {
+                        $status = 'success';
+                        $update = true;
+                        $msg = $_FILES['gambar']['name'] . " berhasil diupload";
+                    } else {
+                        $status = 'error';
+                        $update = false;
+                        $msg = 'Gagal upload banner.';
+                    }
                 } else {
-                    $status = 'error';
-                    $update = false;
-                    $msg = 'Gagal merubah banner.';
+                    $insert = $this->db->insert('dek_banner', $filename);
+                    if($insert) {
+                        $status = 'success';
+                        $update = true;
+                        $msg = $_FILES['gambar']['name'] . " berhasil diupload";
+                    } else {
+                        $status = 'error';
+                        $update = false;
+                        $msg = 'Gagal upload banner.';
+                    }
+                    
                 }
+                
             } else {
                 $status = 'error';
                 $update = false;

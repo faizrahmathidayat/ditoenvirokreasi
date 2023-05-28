@@ -36,7 +36,7 @@
                                 </td>
                                 <td class="text-center">
                                     <button class="btn btn-sm btn-success btn_form_ubah_layanan" data-id="<?= $kategories->id ?>" data-judul="<?= $kategories->judul ?>" data-deskripsi="<?= $kategories->deskripsi ?>"><i class="fas fa-edit"></i></button>
-                                    <!-- <button class="btn btn-sm btn-danger btn_hapus_layanan" data-id="<?= $kategories->id ?>" data-banner_filename="<?= $kategories->banner ?>"><i class="fas fa-trash-alt"></i></button> -->
+                                    <button class="btn btn-sm btn-danger btn_hapus_kategori_layanan" data-id="<?= $kategories->id ?>" data-banner_filename="<?= $kategories->banner ?>"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

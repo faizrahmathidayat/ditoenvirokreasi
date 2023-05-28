@@ -170,6 +170,33 @@ class KategoriLayananController extends CI_Controller
         echo json_encode(array('status' => $status, 'msg' => $msg, 'query' => $update, 'token' => $this->security->get_csrf_hash()));
     }
 
+    public function hapus_kategori_layanan()
+    {
+        $id = $this->input->post('id', true);
+        $banner_filename = $this->input->post('banner_filename', true);
+        $getLayanan = $this->db->get_where('dek_kategori_layanan', ['id' => $id]);
+        if ($getLayanan->num_rows() > 0) {
+            $this->db->delete('dek_kategori_layanan', ['id' => $id]);
+            if ($banner_filename != '') {
+                $target = "uploads/kategori_layanan/" . $banner_filename;
+                unlink($target);
+            }
+
+            $response = array(
+                'status_code' => 200,
+                'status' => 'Success',
+                'messages' => 'Data berhasil dihapus',
+            );
+        } else {
+            $response = array(
+                'status_code' => 404,
+                'status' => 'Success',
+                'messages' => 'Data tidak ditemukan',
+            );
+        }
+        echo json_encode($response);
+    }
+
     public function hapus_banner_kategori()
     {
         $id = $this->input->post('id', true);

@@ -52,7 +52,7 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="<?= base_url() ?>"><img src="<?= get_logo() ?>" alt=""></a>
+                                    <a href="<?= base_url() ?>"><img src="<?= get_logo() ?>" alt="" width="100px;"></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">

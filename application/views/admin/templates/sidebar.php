@@ -40,6 +40,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                         Client
                     </a>
+                    <a class="nav-link" href="<?= base_url('dek-admin-login/pesan') ?>">
+                        <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
+                        Pesan
+                    </a>
                 </div>
             </div>
             <div class="sb-sidenav-footer">

@@ -14,7 +14,7 @@
                                         <h3 data-animation="fadeInLeft" data-delay=".5s"><?= $kategories->deskripsi ?></h3>
                                         <!-- Hero-btn -->
                                         <div class="hero__btn" data-animation="fadeInLeft" data-delay="1.1s">
-                                            <a href="<?= base_url('layanan/' . $kategories->id) ?>" class="btn hero-btn">Lihat Selengkapnya</a>
+                                            <a href="<?= base_url('layanan/' . $kategories->id) ?>" class="btn hero-btn">Selengkapnya</a>
                                         </div>
                                     </div>
                                 </div>

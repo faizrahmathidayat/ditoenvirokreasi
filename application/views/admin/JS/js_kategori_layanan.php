@@ -79,11 +79,69 @@
         var data = {
             'id': id,
             'banner_filename': banner_filename,
-            "<?= $this->security->get_csrf_token_name(); ?>": csrf_token
         }
         var url = '<?= base_url('dek-admin-login/hapus-banner-kategori') ?>';
         Swal.fire({
             title: 'Apa anda ingin menghapus banner ini ?',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: url,
+                    type: "post",
+                    dataType: "json",
+                    data: data,
+                    success: function(res) {
+                        if (res.status_code == 200) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: res.messages,
+                                allowOutsideClick: false
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.href = window.location.href;
+                                }
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'oops....',
+                                text: res.messages,
+                                allowOutsideClick: false
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.href = window.location.href;
+                                }
+                            })
+                        }
+                    },
+                    error: function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error!',
+                            text: 'Terjadi kesalahan, gagal menghapus data!',
+                            allowOutsideClick: false
+                        })
+                    }
+                })
+            }
+        })
+    });
+
+    $('#datatablesSimple').on('click', '.btn_hapus_kategori_layanan', function(e) {
+        var id = $(this).data('id');
+        var banner_filename = $(this).data('banner_filename');
+        var csrf_token = "<?= $this->security->get_csrf_hash(); ?>";
+        var data = {
+            'id': id,
+            'banner_filename': banner_filename,
+        }
+        var url = '<?= base_url('dek-admin-login/hapus-kategori-layanan') ?>';
+        Swal.fire({
+            title: 'Apa anda ingin menghapus kategori ini ?',
             showCancelButton: true,
             confirmButtonText: 'OK',
         }).then((result) => {

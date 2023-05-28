@@ -11,13 +11,14 @@ class DashboardController extends CI_Controller
 
     public function index()
     {
-        $data['main_popup'] = empty(get_main_popup()) || get_main_popup()->gambar == null || get_main_popup()->gambar == '' ? base_url('uploads/default-image.png') : base_url('uploads/main_popup/' . !empty(get_main_popup()) ? get_main_popup()->gambar : '');
+        $data['main_popup'] = empty(get_main_popup()) || get_main_popup()->gambar == null || get_main_popup()->gambar == '' ? base_url('uploads/default-image.png') : base_url('uploads/main_popup/' .get_main_popup()->gambar);
         $data['is_active_popup'] = !empty(get_main_popup()) && get_main_popup()->is_active ? 'checked' : '';
         admin_template('admin/v_dashboard', $data, 'js_dashboard');
     }
 
     public function send_email()
     {
+        die();
         $config = array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.zoho.com',
@@ -66,7 +67,7 @@ class DashboardController extends CI_Controller
                 chmod($upload['full_path'], 0777);
                 $params = array('gambar' => $upload['file_name'], 'is_active' => $is_active);
 
-                if (get_main_popup()->gambar != null || get_main_popup()->gambar != '') {
+                if (!empty(get_main_popup()) || !is_null(get_main_popup())) {
                     $target = "uploads/main_popup/" . get_main_popup()->gambar;
                     $unlink = unlink($target);
                     if ($unlink) {
@@ -87,9 +88,8 @@ class DashboardController extends CI_Controller
                         $msg = 'Gagal menghapus gambar yang tersedia';
                     }
                 } else {
-                    $this->db->where('id', get_main_popup()->id);
-                    $update = $this->db->update('dek_main_popup', $params);
-                    if ($update) {
+                    $insert = $this->db->insert('dek_main_popup', $params);
+                    if ($insert) {
                         $status = 'success';
                         $update = true;
                         $msg = $_FILES['gambar']['name'] . " berhasil diupload";
