@@ -17,6 +17,8 @@ application/logs/*
 !application/logs/.htaccess
 /vendor/
 
+application/config/database.php
+
 uploads/banner/*
 !uploads/banner/.gitkeep 
 uploads/client/*
