@@ -12,9 +12,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 
-$hook['pre_system'][] = array(
-    'class'    => 'Maintenance_hook',
-    'function' => 'offline_check',
-    'filename' => 'Maintenance_hook.php',
-    'filepath' => 'hooks'
-);
+// $hook['pre_system'][] = array(
+//     'class'    => 'Maintenance_hook',
+//     'function' => 'offline_check',
+//     'filename' => 'Maintenance_hook.php',
+//     'filepath' => 'hooks'
+// );
+# Load phpdotenv
+require_once FCPATH.'vendor/autoload.php';
+$hook['pre_system'] = function() {
+    $dotenv = Dotenv\Dotenv::create(FCPATH);
+    $dotenv->load();
+};
