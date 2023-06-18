@@ -140,7 +140,7 @@
 <script type="text/javascript">
     (function() {
         var options = {
-            whatsapp: "+6285228636411", // WhatsApp number
+            whatsapp: <?= !empty(get_perusahaan()) ? get_perusahaan()->telepon : '0' ?>, // WhatsApp number
             call_to_action: "Kirimi kami pesan", // Call to action
             position: "left", // Position may be 'right' or 'left'
         };
